@@ -15,3 +15,7 @@ class User(models.Model):
 
 class Field(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    field_name = models.CharField(max_length=60, default='SOME STRING')
+
+    def __str__(self):
+        return self.field_name

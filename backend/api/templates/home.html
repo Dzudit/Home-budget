@@ -1,0 +1,23 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+
+{% block content %}
+{% if user.is_authenticated %}
+  Hi {{ user.username }}!
+{% if all_Users %}
+    <ul>
+        {% for user in all_Users %}
+        <li><a href="/api/{{user.id}}/">{{user.name}}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h3>You dont habe any user</h3>
+{% endif %}
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">login</a>
+{% endif %}
+{% endblock %}
